@@ -15,7 +15,7 @@ class puppet_collectd ($graphite_ip = "172.26.1.102") {
   exec { "apt-get install collectd": provider => shell } ->
   file { "/etc/collectd/collectd.conf":
     ensure  => present,
-    content => template('templates/collectd.conf.erb')
+    content => template('puppet_collectd/collectd.conf.erb')
   } ->
   exec { "update-rc.d collectd defaults": provider => shell } ->
   exec { "service collectd restart": provider => shell }
