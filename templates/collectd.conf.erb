@@ -62,13 +62,18 @@ LoadPlugin write_graphite
 #       RRATimespan 158112000
 #       XFF 0.1
 </Plugin>
-
+<Plugin processes>
+Process collectd
+Process mysqld
+Process cassandra
+Process node
+</Plugin>
 
 <Plugin write_graphite>
   <Node "example">
     Host "<%=@graphite_ip%>"
     Port "2003"
-    Prefix "collectd.server1"
+    Prefix "collectd.server-"
   </Node>
 </Plugin>
 
